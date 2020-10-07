@@ -10,9 +10,9 @@ public interface UserMapper {
 
     @Insert("INSERT INTO USERS (username, salt, password, firstname, lastname) VALUES " +
             "(#{username}, #{salt}, #{password}, #{firstName}, #{lastName})")
-    @Options(useGeneratedKeys = true, keyProperty = "userid")
+    @Options(useGeneratedKeys = true, keyProperty = "userId")
     Integer insert(User user);
 
-    @Delete("DELETE FROM USERS WHERE userid = #{userid}")
+    @Delete("DELETE FROM USERS WHERE userid = #{userId}")
     void delete(Integer userId);
 }
