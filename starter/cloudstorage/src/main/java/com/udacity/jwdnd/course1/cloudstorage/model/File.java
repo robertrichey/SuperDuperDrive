@@ -1,20 +1,27 @@
 package com.udacity.jwdnd.course1.cloudstorage.model;
 
 public class File {
-    private int fileId;
+    private Integer fileId;
     private String filename;
-    private String contenttype;
-    private String filesize;
-    private int userid;
-    // filedata BLOB,
-    // foreign key (userid) references USERS(userid)
+    private String contentType;
+    private String fileSize;
+    private Integer userId;
+    private byte[] fileData;
 
+    public File(Integer fileId, String filename, String contentType, String fileSize, Integer userId, byte[] fileData) {
+        this.fileId = fileId;
+        this.filename = filename;
+        this.contentType = contentType;
+        this.fileSize = fileSize;
+        this.userId = userId;
+        this.fileData = fileData;
+    }
 
-    public int getFileId() {
+    public Integer getFileId() {
         return fileId;
     }
 
-    public void setFileId(int fileId) {
+    public void setFileId(Integer fileId) {
         this.fileId = fileId;
     }
 
@@ -26,27 +33,35 @@ public class File {
         this.filename = filename;
     }
 
-    public String getContenttype() {
-        return contenttype;
+    public String getContentType() {
+        return contentType;
     }
 
-    public void setContenttype(String contenttype) {
-        this.contenttype = contenttype;
+    public void setContentType(String contentType) {
+        this.contentType = contentType;
     }
 
-    public String getFilesize() {
-        return filesize;
+    public String getFileSize() {
+        return fileSize;
     }
 
-    public void setFilesize(String filesize) {
-        this.filesize = filesize;
+    public void setFileSize(String fileSize) {
+        this.fileSize = fileSize;
     }
 
-    public int getUserid() {
-        return userid;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setUserid(int userid) {
-        this.userid = userid;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public byte[] getFileData() {
+        return fileData;
+    }
+
+    public void setFileData(byte[] fileData) {
+        this.fileData = fileData;
     }
 }
