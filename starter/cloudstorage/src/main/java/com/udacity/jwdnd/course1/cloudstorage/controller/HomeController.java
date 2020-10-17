@@ -29,11 +29,10 @@ public class HomeController {
         return "home";
     }
 
-    @PostMapping("/home")
-    public String postFile(MultipartFile multipartFile, Authentication authentication, Model model) throws IOException {
-        File file = new File(null, multipartFile.getOriginalFilename(), multipartFile.getContentType(), String.valueOf(multipartFile.getSize()), userService.getUserId(authentication.getName()), multipartFile.getBytes());
+    @PostMapping
+    public String postFile(MultipartFile fileUpload, Authentication authentication, Model model) throws IOException {
+        File file = new File(null, fileUpload.getOriginalFilename(), fileUpload.getContentType(), String.valueOf(fileUpload.getSize()), userService.getUserId(authentication.getName()), fileUpload.getBytes());
         fileService.addFile(file);
-        System.out.println("add file");
         return "home";
     }
 }
