@@ -19,6 +19,10 @@ public class FileService {
         fileMapper.insert(file);
     }
 
+    public void deleteFile(Integer fileid) {
+        fileMapper.delete(fileid);
+    }
+
     public List<File> getFiles() {
         return fileMapper.getFileList();
     }

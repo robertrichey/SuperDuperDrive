@@ -29,10 +29,17 @@ public class HomeController {
         return "home";
     }
 
+    @GetMapping
+    public String deleteFile(Integer fileid) {
+        fileService.deleteFile(fileid);
+        return "home";
+    }
+
     @PostMapping
     public String postFile(MultipartFile fileUpload, Authentication authentication, Model model) throws IOException {
         File file = new File(null, fileUpload.getOriginalFilename(), fileUpload.getContentType(), String.valueOf(fileUpload.getSize()), userService.getUserId(authentication.getName()), fileUpload.getBytes());
         fileService.addFile(file);
+        model.addAttribute("files", fileService.getFiles());
         return "home";
     }
 }
