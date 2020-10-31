@@ -29,9 +29,9 @@ public class HomeController {
         return "home";
     }
 
-    @GetMapping
-    public String deleteFile(Integer fileid) {
-        fileService.deleteFile(fileid);
+    @GetMapping("/delete/{fileId}")
+    public String deleteFile(Integer fileId) {
+        fileService.deleteFile(fileId);
         return "home";
     }
 
