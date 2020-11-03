@@ -3,6 +3,8 @@ package com.udacity.jwdnd.course1.cloudstorage.controller;
 import com.udacity.jwdnd.course1.cloudstorage.model.File;
 import com.udacity.jwdnd.course1.cloudstorage.service.FileService;
 import com.udacity.jwdnd.course1.cloudstorage.service.UserService;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,6 +35,15 @@ public class HomeController {
     public String deleteFile(Integer fileId) {
         fileService.deleteFile(fileId);
         return "home";
+    }
+
+    @GetMapping("/view/{fileId}")
+    public ResponseEntity<byte[]> getFile(Integer fileId) {
+        File file = fileService.getFile(fileId);
+
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment ; filename = \"" + file.getFilename() + "\"")
+                .body(file.getFileData());
     }
 
     @PostMapping

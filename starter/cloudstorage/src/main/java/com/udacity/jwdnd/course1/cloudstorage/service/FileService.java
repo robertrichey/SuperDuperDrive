@@ -23,6 +23,10 @@ public class FileService {
         fileMapper.delete(fileid);
     }
 
+    public File getFile(Integer fileid) {
+        return fileMapper.getFile(fileid);
+    }
+
     public List<File> getFiles() {
         return fileMapper.getFileList();
     }
